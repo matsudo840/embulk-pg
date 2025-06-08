@@ -30,4 +30,4 @@ RUN java -jar ./embulk.jar gem install embulk-input-postgresql && \
     java -jar ./embulk.jar gem install embulk-output-bigquery
 
 # Embulkの実行コマンドを設定します
-ENTRYPOINT ["java","-jar","./embulk.jar","run","./config/config.yml"]
+ENTRYPOINT ["java", "-jar", "./embulk.jar", "run", "./config/config.yml"]
