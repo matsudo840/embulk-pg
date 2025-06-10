@@ -22,8 +22,6 @@ RUN curl --create-dirs -o ./embulk.jar -L "https://github.com/embulk/embulk/rele
 COPY ./embulk.properties /root/.embulk/embulk.properties
 RUN java -jar ./embulk.jar gem install embulk -v 0.11.1
 RUN java -jar ./embulk.jar gem install msgpack -v 1.7.2
-# RUN java -jar ./embulk.jar gem install bundler # if you need Bundler
-# RUN java -jar ./embulk.jar gem install liquid  # if you need Liquid
 
 # Embulkのプラグインをインストール
 RUN java -jar ./embulk.jar gem install embulk-input-postgresql && \
