@@ -1,0 +1,10 @@
+out:
+  type: bigquery
+  auth_method: json_key
+  json_keyfile: {{ env.PROJECT }}/secret/{{ env.GCP_KEY }} # BigQueryアクセス用の秘密鍵
+  # path_prefix: /home/embulk/hoge/tmp/
+  file_ext: .csv.gz
+  source_format: CSV
+  project: {{ env.PROJECT }} # 対象プロジェクト
+  dataset: jader
+  auto_create_table: true

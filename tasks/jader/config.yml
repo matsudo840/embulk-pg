@@ -1,0 +1,16 @@
+in:
+  type: postgresql
+  host: host.docker.internal
+  user: root
+  password: password
+  database: dbname
+  table: product
+  select: "id, name, email"
+out:
+  type: mysql
+  host: host.docker.internal
+  user: root
+  password: password
+  database: dbname
+  table: product2
+  mode: insert
