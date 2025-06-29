@@ -1,0 +1,31 @@
+in:
+  type: file
+  path_prefix: /Users/matsudo840/develop/embulk-pg/tasks/jader/raw/demo_utf8.csv
+  parser:
+    type: csv
+    charset: UTF-8
+    newline: LF
+    header_line: true
+    skip_header_lines: 1
+    delimiter: ','
+    columns:
+      - {name: id, type: string}
+      - {name: report_count, type: long}
+      - {name: gender, type: string}
+      - {name: age, type: string}
+      - {name: weight, type: string}
+      - {name: height, type: string}
+      - {name: report_year_quarter, type: string}
+      - {name: status, type: string}
+      - {name: report_type, type: string}
+      - {name: reporter_qualification, type: string}
+      - {name: e2b, type: string}
+out:
+  type: bigquery
+  mode: replace
+  auth_method: json_key
+  json_keyfile: /Users/matsudo840/develop/embulk-pg/secret/embulk-jader-key.json
+  project: matsudo840-bq-prod
+  dataset: jader
+  table: demo
+  auto_create_table: true

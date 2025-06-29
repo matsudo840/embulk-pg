@@ -1,0 +1,36 @@
+in:
+  type: file
+  path_prefix: /Users/matsudo840/develop/embulk-pg/tasks/jader/raw/drug_utf8.csv
+  parser:
+    type: csv
+    charset: UTF-8
+    newline: LF
+    header_line: true
+    skip_header_lines: 1
+    delimiter: ','
+    columns:
+      - {name: id, type: string}
+      - {name: report_count, type: long}
+      - {name: drug_seq, type: long}
+      - {name: drug_role, type: string}
+      - {name: drug_generic_name, type: string}
+      - {name: drug_brand_name, type: string}
+      - {name: administration_route, type: string}
+      - {name: administration_start_date, type: string}
+      - {name: administration_end_date, type: string}
+      - {name: dose, type: string}
+      - {name: dose_unit, type: string}
+      - {name: split_dose_count, type: string}
+      - {name: reason_for_use, type: string}
+      - {name: drug_action, type: string}
+      - {name: rechallenge_result, type: string}
+      - {name: risk_category, type: string}
+out:
+  type: bigquery
+  mode: replace
+  auth_method: json_key
+  json_keyfile: /Users/matsudo840/develop/embulk-pg/secret/embulk-jader-key.json
+  project: matsudo840-bq-prod
+  dataset: jader
+  table: drug
+  auto_create_table: true
